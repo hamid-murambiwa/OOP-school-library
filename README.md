@@ -1,4 +1,4 @@
-# Create-Your-Enumerable
+# OOP school library
 This is an "OOP school library" app, that records what books are in the library and who borrows them.
 
 # Built With
