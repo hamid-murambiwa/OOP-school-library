@@ -6,49 +6,83 @@ require_relative 'student'
 require_relative 'corrector'
 require_relative 'teacher'
 
+def reply(name)
+  sleep 1
+  puts "\n#{name} created successfully!!!"
+  sleep 1
+  resume
+end
+
+def resume
+  print "\nDo you wish to continue? [Y/N]: "
+  input = gets.chomp
+
+  if input.downcase == 'y' || input.downcase == 'yes' || input == ''
+    clear
+    run
+  else
+    exit
+  end
+end
+
+def invalid_prompt
+  clear
+  puts 'Incorrect selection, please try again!'
+  sleep 1
+end
+
+def clear
+  print "\e[2J\e[f"
+end
+
+def exit
+  clear
+  nil
+end
+
 class App
   def initialize
     @books = []
     @rentals = []
     @people = []
-    end
+  end
 
   def run
     puts 'Welcome to School Library App!'
 
     loop do
-        actions
+      actions
 
-        option = gets.chomp
+      option = gets.chomp
 
-        break if option == '7'
+      break if option == '7'
 
-        handle_action option
+      handle_action option
     end
 
     puts 'Thank you for using this app!'
-    end
+  end
 
-    private
+  private
 
   def handle_action(option)
     case option
     when '1'
-        all_books
+      all_books
     when '2'
-        all_people
+      all_people
     when '3'
-        create_person
+      create_person
     when '4'
-        create_book
+      create_book
     when '5'
-        create_rental
+      create_rental
     when '6'
-        all_rental_by_id
+      all_rental_by_id
     else
-        puts 'That is not a valid option'
+      puts 'That is not a valid option'
     end
-   end
+  end
 
   def actions
     puts
@@ -60,40 +94,6 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
-  end
-
-  def reply(name)
-    sleep 1
-    puts "\n#{name} created successfully!!!"
-    sleep 1
-    resume
-  end
-
-  def resume
-    print "\nDo you wish to continue? [Y/N]: "
-    input = gets.chomp
-
-    if input.downcase == 'y' || input.downcase == 'yes' || input == ''
-      clear
-      run
-    else
-      exit
-    end
-  end
-
-  def invalid_prompt
-    clear
-    puts 'Incorrect selection, please try again!'
-    sleep 1
-  end
-
-  def clear
-    print "\e[2J\e[f"
-  end
-
-  def exit
-    clear
-    nil
   end
 
   def create_person
@@ -224,8 +224,8 @@ class App
 end
 
 def main
-    app = App.new
-    app.run
+  app = App.new
+  app.run
 end
 
 main
