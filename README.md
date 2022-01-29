@@ -8,11 +8,6 @@
 - Ruby
 - Rubocop
 
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
-
 ## To get a local copy run the following steps:
 
 - Copy this link [this link](https://github.com/hamid-murambiwa/OOP-school-library.git)
