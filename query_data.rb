@@ -1,3 +1,5 @@
+require_relative 'store_data'
+
 module List
   def all_books
     @books.each do |book|
@@ -8,8 +10,8 @@ module List
   end
 
   def all_people
-    @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    fetch_data('users').each do |person|
+      puts "[#{person["class"]}] Name: #{person["name"]}, ID: #{person["id"]}, Age: #{person["age"]}"
     end
     puts "\n"
     resume

@@ -1,3 +1,6 @@
+require './student'
+require './teacher'
+
 module Create
   def create_person
     puts "\nPlease select a number to choose an option:"
@@ -30,7 +33,7 @@ module Create
     parent_permission = gets.chomp.downcase
 
     student = Student.new(parent_permission, age, name)
-    @people << student
+    update_people(student)
 
     puts 'Student created'
     sleep 1.2

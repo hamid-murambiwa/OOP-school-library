@@ -1,7 +1,7 @@
 require 'json'
 
 module HandleData
-  def fetch_saved_data(filename)
+  def fetch_data(filename)
     path = "data/#{filename}.json"
     data = []
 
@@ -21,7 +21,7 @@ module HandleData
     File.write(path, JSON.generate(data, create_additions: true))
   end
 
-  def save_user(filename, user)
+  def save_person(filename, user)
     path = "data/#{filename}.json"
     data = fetch_saved_data(filename)
 

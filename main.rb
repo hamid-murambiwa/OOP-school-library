@@ -8,11 +8,13 @@ require_relative 'teacher'
 require_relative 'helper_methods'
 require_relative 'add_data'
 require_relative 'query_data'
+require_relative 'store_data'
 
 class App
   include Tools
   include Create
   include List
+  include HandleData
 
   def initialize
     @books = []
@@ -41,19 +43,17 @@ class App
   def handle_action(option)
     case option
     when '1'
-      all_books
-    when '2'
-      all_people
-    when '3'
       create_person
-    when '4'
+    when '2'
       create_book
-    when '5'
+    when '3'
       create_rental
+    when '4'
+      all_books
+    when '5'
+      all_people
     when '6'
       all_rental_by_id
-    when '7'
-      exit
     else
       puts 'That is not a valid option'
     end
@@ -62,14 +62,32 @@ class App
   def actions
     puts
     puts 'Choose an option by entering a number:'
-    puts '1 - List all books'
-    puts '2 - List all people'
-    puts '3 - Create a person'
-    puts '4 - Create a book'
-    puts '5 - Create a rental'
+    puts '1 - Create a user'
+    puts '2 - Create a book'
+    puts '3 - Create a rental'
+    puts '4 - List all books'
+    puts '5 - List all people'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
   end
+
+  def update_people(people)
+    @people << people
+    save_person('people', people)
+  end
+
+  # def update_books(book)
+  #   @books << book
+  #   save_book('books', book)
+  # end
+
+  # def update_rentals(rental)
+  #   @rentals << rental
+  #   save_rental('rentals', rental)
+  # end
+
+  attr_reader :people
+  # , :books, :rentals
 end
 
 def main
